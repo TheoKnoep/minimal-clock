@@ -16,7 +16,7 @@ function getAnglesFromTime() {
     let minuteAngle = minute / 60 * 360; 
     let secondAngle = second / 60 * 360; 
 
-    console.log(secondAngle); 
+    // console.log(secondAngle); 
 
     return { hourAngle, minuteAngle, secondAngle }; 
 }
@@ -37,3 +37,48 @@ const template = document.querySelector('#burger-template');
 const content = template.content.cloneNode(true); 
 
 // container.append(content); 
+
+
+
+
+/**
+ * Color setter
+ */
+function colors() {
+    // get the exact current timestamp : 
+    const now = new Date(); 
+    console.log(now.getTime()); 
+
+    //get the timestamp of the beginning of the day :
+    var d = new Date;
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    console.log(d.getTime());
+
+    // calculate percentage of the day : 
+    let msOfThisDay = now.getTime() - d.getTime(); 
+    console.log("milliseconds of this DAY : ", now.getTime() - d.getTime()); 
+    console.log("day percentage = ", msOfThisDay / (24 * 3600 * 1000)); 
+    const dayPercentage = msOfThisDay / (24 * 3600 * 1000); 
+
+    // define colors based on the day percentage :
+    let h = 360 * dayPercentage; 
+    
+    return {
+        mainColor: `hsl(${h}, 70%, 40%)`,
+        sideColor: `hsl(${h}, 70%, 70%)`,
+        lastColor: `hsl(${h}, 50%, 70%)`
+    }
+
+}
+function applyColor() {
+    // hours.style.backgroundColor = colors().mainColor; 
+    let overStyle = `<style>
+        .hours { background: ${ colors().mainColor }; }
+        .minutes::before { background: ${ colors().sideColor }; }
+        .seconds::before { background: ${ colors().lastColor }; }
+    </style>`; 
+    document.head.insertAdjacentHTML('beforeend', overStyle); 
+}
+applyColor(); 
