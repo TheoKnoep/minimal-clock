@@ -2,6 +2,11 @@ const hours = document.querySelector('.hours');
 const minutes = document.querySelector('.minutes'); 
 const seconds = document.querySelector('.seconds'); 
 
+setInterval(() => {
+    applyTime(); 
+    applyColor(); 
+}, 1000); 
+
 
 getAnglesFromTime() ; 
 function getAnglesFromTime() {
@@ -28,7 +33,7 @@ function applyTime() {
     seconds.style.transform = `rotate(${d.secondAngle}deg)`; 
 }
 applyTime(); 
-setInterval(applyTime, 1000); 
+
 
 
 /* template */ 
