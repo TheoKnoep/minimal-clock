@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML CLOCK</title>
+    <meta name="theme-color" content="#000" />
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <main id="app-container">
+        <template id="burger-template">
+            <button type="button" aria-expanded="false" aria-label="Menu" aria-controls="mainnav">
+              <svg width="24" height="24" aria-hidden="true">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z">
+              </svg>
+            </button>
+        </template>
+
+        <div class="clock-container">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+            <div class="seconds"></div>
+        </div>
+        <div class="svg-container">
+            <svg
+                viewBox="0 0 24 24"
+                width="64"
+                height="64"    
+            >
+                <!-- <line x1="2" y1="4.2" x2="22" y2="4.2" />
+                <line x1="2" y1="9.4" x2="16" y2="9.4"/>
+                <line x1="2" y1="14.6" x2="22" y2="14.6"/>
+                <line x1="2" y1="19.8" x2="16" y2="19.8"/> -->
+            </svg>
+        </div>
+    </main>
+    
+    <script src="app.js"></script>
+
+    <script>
+        //install sw : 
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js", {scope: './'} ).then(registration => {
+                console.log("SW Registred!");
+                console.log(registration);
+            }).catch(error => {
+                console.log("SW Failed!");
+                console.log(error)
+            }); 
+        } 
+    </script>
+</body>
+</html>
