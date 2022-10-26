@@ -52,19 +52,19 @@ const content = template.content.cloneNode(true);
 function colors() {
     // get the exact current timestamp : 
     const now = new Date(); 
-    console.log(now.getTime()); 
+    // console.log(now.getTime()); 
 
     //get the timestamp of the beginning of the day :
     var d = new Date;
     d.setHours(0);
     d.setMinutes(0);
     d.setSeconds(0);
-    console.log(d.getTime());
+    // console.log(d.getTime());
 
     // calculate percentage of the day : 
     let msOfThisDay = now.getTime() - d.getTime(); 
-    console.log("milliseconds of this DAY : ", now.getTime() - d.getTime()); 
-    console.log("day percentage = ", msOfThisDay / (24 * 3600 * 1000)); 
+    // console.log("milliseconds of this DAY : ", now.getTime() - d.getTime()); 
+    // console.log("day percentage = ", msOfThisDay / (24 * 3600 * 1000)); 
     const dayPercentage = msOfThisDay / (24 * 3600 * 1000); 
 
     // define colors based on the day percentage :
